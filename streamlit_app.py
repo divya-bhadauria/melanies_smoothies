@@ -10,17 +10,14 @@ cnx = st.connection("snowflake")   # requires [connections.snowflake] in secrets
 session = cnx.session()
 
 # Load options
-rows = (
+snow_df = (
     session.table("SMOOTHIES.PUBLIC.FRUIT_OPTIONS")
            .select(col("FRUIT_NAME"), col("SEARCH_ON"))
-           .collect()
 )
-#st.dataframe(data = rows, use_container_width = True)
-#st.stop()
 
-pd_df = rows.to_pandas()
-st.dataframe(pd_df)
-st.stop()
+# Convert to pandas and show
+pd_df = snow_df.to_pandas()
+st.dataframe(pd_df, use_container_width=True)
 
 fruit_options = [r["FRUIT_NAME"] for r in rows]
 
