@@ -16,7 +16,7 @@ snow_df = (
 )
 
 pd_df = snow_df.to_pandas()
-fruit_options = [r["FRUIT_NAME"] for r in rows]
+fruit_options = [r["FRUIT_NAME"] for r in snow_df]
 
 name_on_order = st.text_input("Name on Smoothie:")
 
