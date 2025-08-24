@@ -11,9 +11,12 @@ session = cnx.session()
 # Load options
 rows = (
     session.table("SMOOTHIES.PUBLIC.FRUIT_OPTIONS")
-           .select(col("FRUIT_NAME"))
+           .select(col("FRUIT_NAME"), col("SEARCH_ON"))
            .collect()
 )
+st.dataframe(data = rows, use_container_width = True)
+st.stop()
+
 fruit_options = [r["FRUIT_NAME"] for r in rows]
 
 name_on_order = st.text_input("Name on Smoothie:")
