@@ -15,9 +15,9 @@ snow_df = (
            .select(col("FRUIT_NAME"), col("SEARCH_ON"))
 )
 
-# Convert to pandas and show
 pd_df = snow_df.to_pandas()
 st.dataframe(pd_df, use_container_width=True)
+st.stop()
 
 fruit_options = [r["FRUIT_NAME"] for r in rows]
 
