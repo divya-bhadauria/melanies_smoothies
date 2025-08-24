@@ -16,12 +16,10 @@ snow_df = (
 )
 
 pd_df = snow_df.to_pandas()
-#st.dataframe(pd_df, use_container_width=True)
-#st.stop()
-
 fruit_options = [r["FRUIT_NAME"] for r in rows]
 
 name_on_order = st.text_input("Name on Smoothie:")
+
 ingredients_list = st.multiselect(
     "Select your favorite fruits (up to 5):",
     fruit_options,
