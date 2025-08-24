@@ -28,9 +28,11 @@ if ingredients_list:
     
     for fruit_chosen in ingredients_list:
         ingredient_string += fruit_chosen + ' '
-        st.write(f"Fruit list is {ingredient_string}")
-        smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
+        st.subheader(fruit_chosen + ' Nutrition Information')
+        smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/" + fruit_chosen)
         sf_df = st.dataframe(data = smoothiefroot_response.json(), use_container_width = True )
+        
+    st.write(f"Fruit list is {ingredient_string}")
 
     if st.button("Place Order"):
         session.sql(
